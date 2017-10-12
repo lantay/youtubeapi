@@ -4,6 +4,11 @@
 import React from 'react';
 //ح˚௰˚づ  react dom is what connects react to the dom
 import ReactDOM from 'react-dom';
+//ح˚௰˚づ whenever write our own code have to give path
+//but not when using libraries like above because node modules
+//files won't have same name
+import SearchBar from './components/search_bar';
+
 
 const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ'
 //-Create a new componenet. Should produce some html
@@ -13,8 +18,16 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ'
   //   return <div>Hi!</div>;
   // }
 
-const app = () => {
-  return <div>Hi!</div>;
+// back when rendered "hi"
+  // const app = () => {
+  //   return <div>Hi!</div>;
+  // }
+const App = () => {
+  return (
+  <div>
+    <SearchBar/>
+  </div>
+  );
 }
 
   // ح˚௰˚づ• webpack and babel together make bundle.js

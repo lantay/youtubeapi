@@ -29,7 +29,6 @@ const App = () => {
   </div>
   );
 }
-//test
   // ح˚௰˚づ• webpack and babel together make bundle.js
 //ح˚௰˚づ • component is a set of js functions that produces html
 // javascript modules

@@ -10,7 +10,8 @@ import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
 
 
-const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ'
+const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
+
 //-Create a new componenet. Should produce some html
 //-this is like a factory that creates a componenet
 //non es6
@@ -22,8 +23,10 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ'
   // const app = () => {
   //   return <div>Hi!</div>;
   // }
+
 const App = () => {
   return (
+  //ح˚௰˚づ this stuff is jsx-->js xml --> js that makes html
   <div>
     <SearchBar/>
   </div>

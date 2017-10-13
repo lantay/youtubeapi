@@ -21,11 +21,14 @@ class SearchBar extends Component { //Component here is React.Component which go
   //render is a method and has to be there
 
   // ح˚௰˚づح˚௰˚づ STATE ح˚௰˚づح˚௰˚づ //
+    // ح˚௰˚づ think state when want to update component
     //-Each class has a state object--functional componenets do not have state
     //-used to record/react to user events
     //-when state is changed componenet immediately rerenders
       //and rerenders all children  
     //-set state inside of constructor of class
+  
+  //constructor called at beginning of component's life--when new instance created (different than rendering)
   constructor(props) {
     super(props); //super just calls the parent method, just call it
     //-initialize state with new object assigned to this.state
@@ -48,13 +51,28 @@ class SearchBar extends Component { //Component here is React.Component which go
     //happen whenever there is a change
     return (
       <div>
-        <input onChange = {(event) => this.setState({term: event.target.value})} />;
-      Value of the input: {this.state.term}
+        <input 
+          value={this.state.term} //this line allows state and value to stay in sync
+          onChange = {(event) => this.setState({term: event.target.value})} 
+        />
+      
+      
       </div>
-      //"Value of input" is plain text bc in jsx
+      //deleted value of input part
+        // Value of the input: {this.state.term}
+     //"Value of input" is plain text bc in jsx
       //-can reference state with this.state.term just don't
       //try to change that way
-      
+      // ح˚௰˚づ ح˚௰˚づTHIS WAS A SIMPLE EXAMPLE FOR STATE ح˚௰˚づ ح˚௰˚づ
+        //     -on the change, this.setState is called to change the state and takes the event object which is called when an event such as typing happens and saves the value of the input which is stored into event in the state
+        //     -then plain text saying "Value of input" is displayed and this.state.term is displayed in jsx brackets.
+        // whenever want to change a component, think state.
+        // return (
+        //   <div>
+        //     <input onChange = {(event) => this.setState({term: event.target.value})} />;
+        //   Value of the input: {this.state.term}
+        //   </div>
+        // );
      //ح˚௰˚づless code way to do above so don't need onInputChange
       //(this was back in the console.log version)
 

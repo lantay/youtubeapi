@@ -54,7 +54,7 @@ class SearchBar extends Component { //Component here is React.Component which go
         <input 
           value={this.state.term} //this line allows state and value to stay in sync
           //old before added the onInputChange method
-             /* onChange = {(event) => this.setState({term: event.target.value})}  */
+             /* onChange = {(event) => this.setState({term: event.target.value})}  *
           
           onChange={event =>this.onInputChange(event.target.value)}
           placeholder="Search"

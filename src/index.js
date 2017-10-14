@@ -48,7 +48,10 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
       //since this is a CLASS component need to mention with 
       //this.props if want to access props
       
-      this.state= {videos: [] };
+      this.state= {
+        videos: [],
+        selectedVideo:null
+      };
 
       //<!--================= youtube api stuff================-->
       // ح˚௰˚づ downward data flow: only topmost componenet should
@@ -58,7 +61,10 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
         //-function(data){}/(data)=>{} is a callback function with data you get back from
         //that call we just made
         //(data) can be whatever you want it to be-->changed to videos for shortcut
-        this.setState({videos}) //same as videos:videos and works bc prop name the same-->es6
+        this.setState({
+          videos:videos,
+          selectedVideo:videos[0]
+        }) //same as videos:videos and works bc prop name the same-->es6
 
         //normally, component tries to render itself before this search is done
       });
@@ -68,8 +74,12 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
     //ح˚௰˚づ this stuff is jsx-->js xml --> js that makes html
     <div>
       <SearchBar/>
-      <VideoDetail video={this.state.videos[0]}/>
-      <VideoList videos={this.state.videos}/>
+      <VideoDetail video={this.state.selectedVideo}/>
+      <VideoList 
+      //this below is that shortcut
+      //it's passing in a function that sets the state when called
+        onVideoSelect= {selectedVideo => this.setState({selectedVideo})}
+        videos={this.state.videos}/>
     </div>
     //^VideoList videos is a prop and arrives as an argument to VideoList function
     //passing in videos to the list and just 1 video to videodetail

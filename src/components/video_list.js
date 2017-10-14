@@ -6,10 +6,17 @@ const VideoList = (props) => { //props passed from index.js when put in return s
   const videos=props.videos;
       //recommends map over for loops
     const videoItems= props.videos.map((video) => {
-      return <VideoListItem key={video.etag}video={video} />
+      return (
+        <VideoListItem
+          //pass prop passed from app (index.js) down again to VideoListItem
+          //usually don't go more than 2 levels deep with this
+          onVideoSelect={props.onVideoSelect} 
+          key={video.etag}
+          video={video} />
       //the key helps you know which video you need to update if need to update one
       //gives error if don't have
       //also better performance
+      );
     });
   //ح˚௰˚づ ح˚௰˚づ ح˚௰˚づyou can use bootstrap in react jsx ح˚௰˚づ ح˚௰˚づ ح˚௰˚づ
 

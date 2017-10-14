@@ -50,10 +50,14 @@ class SearchBar extends Component { //Component here is React.Component which go
     //-onChange is a property built into react that makes something
     //happen whenever there is a change
     return (
-      <div>
+      <div className="search-bar">
         <input 
           value={this.state.term} //this line allows state and value to stay in sync
-          onChange = {(event) => this.setState({term: event.target.value})} 
+          //old before added the onInputChange method
+             /* onChange = {(event) => this.setState({term: event.target.value})}  */
+          
+          onChange={event =>this.onInputChange(event.target.value)}
+          placeholder="Search"
         />
       
       
@@ -84,7 +88,10 @@ class SearchBar extends Component { //Component here is React.Component which go
       
     );
   }
-  
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
+  }
   
   //way of doing the set state function with an event; broke when started setting state
     // //this is an event
@@ -106,6 +113,11 @@ export default SearchBar;
 //componenet we just made
 
                        //????????things don't know????????
+                       //onInputChange as it is in lesson 38 and below is an event right?
+                          //  onInputChange(term) {
+                          //   this.setState({term});
+                          //   this.props.onSearchTermChange(term);
+                          // }
                        //??why did event method break when started setting
                        //state with it?
                        //don't completely understand event object

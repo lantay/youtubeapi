@@ -53,36 +53,46 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
         selectedVideo:null
       };
 
+      this.videoSearch('surfboards');
+      //-we moved the youtube stuff from here to below so have to do above so
+      //it still gets called at the right time
+      
+      
+    }
+
+    videoSearch(term) {
       //<!--================= youtube api stuff================-->
       // ح˚௰˚づ downward data flow: only topmost componenet should
       //fetch data which is index.js ح˚௰˚づ
 
-      YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => { //same as function(data) {}
-        //-function(data){}/(data)=>{} is a callback function with data you get back from
-        //that call we just made
-        //(data) can be whatever you want it to be-->changed to videos for shortcut
+      YTSearch({key: API_KEY, term: term}, (videos) => { //same as function(data) {}
+      //-function(data){}/(data)=>{} is a callback function with data you get back from
+      //that call we just made
+      //(data) can be whatever you want it to be-->changed to videos for shortcut
         this.setState({
           videos:videos,
           selectedVideo:videos[0]
         }) //same as videos:videos and works bc prop name the same-->es6
 
-        //normally, component tries to render itself before this search is done
+      //normally, component tries to render itself before this search is done
       });
+
+
     }
     render() {
-    return (
-    //ح˚௰˚づ this stuff is jsx-->js xml --> js that makes html
-    <div>
-      <SearchBar/>
-      <VideoDetail video={this.state.selectedVideo}/>
-      <VideoList 
-      //this below is that shortcut
-      //it's passing in a function that sets the state when called
-        onVideoSelect= {selectedVideo => this.setState({selectedVideo})}
-        videos={this.state.videos}/>
-    </div>
-    //^VideoList videos is a prop and arrives as an argument to VideoList function
-    //passing in videos to the list and just 1 video to videodetail
+      return (
+      //ح˚௰˚づ this stuff is jsx-->js xml --> js that makes html
+        <div>
+          <SearchBar onSearchTermChange={term=>this.videoSearch(term)}/>
+          <VideoDetail video={this.state.selectedVideo}/>
+          <VideoList 
+          //this below is that shortcut
+          //it's passing in a function that sets the state when called
+            onVideoSelect= {selectedVideo => this.setState({selectedVideo})}
+            videos={this.state.videos}/>
+        </div>
+      //^VideoList videos is a prop and arrives as an argument to VideoList function
+      //passing in videos to the list and just 1 video to videodetail
     );
   }
 }

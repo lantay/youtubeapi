@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
 import YTSearch from 'youtube-api-search';
 import VideoList from './components/video_list'
+import VideoDetail from './components/video_detail'
 const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
 
 
@@ -44,7 +45,9 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
     //could also do React.Component
     constructor(props) {
       super(props)
-
+      //since this is a CLASS component need to mention with 
+      //this.props if want to access props
+      
       this.state= {videos: [] };
 
       //<!--================= youtube api stuff================-->
@@ -56,6 +59,8 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
         //that call we just made
         //(data) can be whatever you want it to be-->changed to videos for shortcut
         this.setState({videos}) //same as videos:videos and works bc prop name the same-->es6
+
+        //normally, component tries to render itself before this search is done
       });
     }
     render() {
@@ -63,9 +68,11 @@ const API_KEY = 'AIzaSyDdTfaxaWIUIqbdxGgbFt5e0kfjrG2HQdQ';
     //ح˚௰˚づ this stuff is jsx-->js xml --> js that makes html
     <div>
       <SearchBar/>
+      <VideoDetail video={this.state.videos[0]}/>
       <VideoList videos={this.state.videos}/>
     </div>
     //^VideoList videos is a prop and arrives as an argument to VideoList function
+    //passing in videos to the list and just 1 video to videodetail
     );
   }
 }
